@@ -12,6 +12,7 @@ import sys
 import time
 from math import log10
 from random import uniform
+import skimage 
 
 import matplotlib.cm as cm
 import matplotlib.patches as patches
@@ -66,7 +67,7 @@ for index in range(1445):
     index = index
     gt_image = (image[index, :, :, :]).astype(float)
     gt_image = np.swapaxes(gt_image, 0, 2)
-    gt_image = scipy.misc.imresize(gt_image, [480, 640]).astype(float)
+    gt_image = skimage.transform.resize(gt_image, [480, 640]).astype(float)
     gt_image = gt_image / 255
 
     gt_depth = depth[index, :, :]
